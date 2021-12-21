@@ -39,12 +39,8 @@ export const editRuko = async(req, res) => {
         const id = req.params.id
         const check = await Ruko.findById(id)
         if(!check) return res.status(401).json({message: "Ruko tidak ditemukan"})
-        const updatedRuko = await Ruko.updateOne(
-            {_id:id},
-            {$set: req.body}
-        )
-        req.status(200).json(updatedRuko)
-
+        const updatedRuko = await Ruko.updateOne({_id:id}, {$set: req.body})
+        res.status(200).json(updatedRuko)
     } catch (error) {
         res.status(500).json({message:error})
     }
@@ -59,7 +55,7 @@ export const deleteRuko = async(req, res) => {
         const deletedRuko = await Ruko.deleteOne(
             {_id:id}
         )
-        req.status(200).json(deletedRuko)
+        res.status(200).json(deletedRuko)
     } catch (error) {
         res.status(500).json({message:error})
     }
