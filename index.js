@@ -23,5 +23,5 @@ app.use(express.json())
 app.use('/ruko', ruko_router)
 app.use('/customer', customer_router)
 app.use('/transaksi', transaksi_router)
-app.listen('3000', () => console.log("Server running di port 3000"))
+app.listen(process.env.PORT || 3000, () => console.log("Server running di port 3000"))
 
