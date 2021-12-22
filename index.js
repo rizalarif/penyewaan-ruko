@@ -3,6 +3,7 @@ import cors from 'cors'
 import express from 'express'
 import ruko_router from './routers/ruko_router.js'
 import customer_router from './routers/customer_router.js'
+import transaksi_router from './routers/transaksi_router.js'
 
 mongoose.connect('mongodb://localhost:27017/penyewaan-ruko', {
     useNewUrlParser: true,
@@ -21,5 +22,6 @@ app.use(express.json())
 
 app.use('/ruko', ruko_router)
 app.use('/customer', customer_router)
+app.use('/transaksi', transaksi_router)
 app.listen('3000', () => console.log("Server running di port 3000"))
 
